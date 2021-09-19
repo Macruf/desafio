@@ -1,0 +1,60 @@
+stages:  
+ - build 
+ - test
+ - build_image 
+ - deploy
+
+build:
+  stage: build 
+  image: python:latest
+  before_script:
+    - python -v
+    - pip install virtualenv
+    - virtualenv env
+    - env/bin/python -m pip install --upgrade pip
+    - source env/bin/activate
+  script:
+    - pip install -r app/requirements.txt
+
+unit_test:
+  image: python:latest
+  stage: test
+  before_script:
+    - python -v
+    - pip install virtualenv
+    - virtualenv env
+    - env/bin/python -m pip install --upgrade pip
+    - source env/bin/activate
+  script:  
+    - pip install pytest
+
+build_image:
+  image: docker:latest
+  stage: build_image 
+  services:
+    - docker:dind
+  before_script:
+    - docker login -u "$CI_REGISTRY_USER" -p "$CI_REGISTRY_PASSWORD" $CI_REGISTRY
+  script:
+    - docker build -t "$CI_REGISTRY_IMAGE" .
+    - docker push "$CI_REGISTRY_IMAGE"
+
+deploy-dev:
+  image: k8s:latest
+  stage: deploy
+  environment:
+    name: dev
+  script:
+   - kubectl version --client
+    
+   
+
+
+
+
+
+
+
+
+
+
