@@ -3,9 +3,7 @@ pipeline {
    stages {
        stage("Build") {
            steps {
-               
-               sh './before_build.sh'
-               sh 'pip install -r requirements.txt'
+                sh 'pip install -r requirements.txt'
            }
         }
         stage("Unit-Test") {
