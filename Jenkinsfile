@@ -3,7 +3,7 @@ pipeline {
    stages {
        stage("Build") {
            steps {
-               sh 'chmod +x -R ${env.WORKSPACE}'
+               
                sh './before_build.sh'
                sh 'pip install -r requirements.txt'
            }
