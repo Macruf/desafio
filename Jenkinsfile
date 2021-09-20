@@ -9,7 +9,8 @@ pipeline {
                 //sh 'env/bin/python -m pip install --upgrade pip'
                 //sh 'source env/bin/activate'
                 sh 'python3 -m venv env'
-                sh 'pip install -r requirements.txt'
+                sh 'source env/bin/activate'
+                //sh 'pip install -r requirements.txt'
            }
         }
         stage("Unit-Test") {
