@@ -4,11 +4,11 @@ pipeline {
        stage("Build") {
            steps {
                 sh 'python -v'
-                //sh 'pip install virtualenv'
-                //sh 'virtualenv env'
+                sh 'pip install virtualenv'
+                sh 'virtualenv env'
                 //sh 'env/bin/python -m pip install --upgrade pip'
                 //sh 'source env/bin/activate'
-                //sh 'python3 -m venv env'
+                sh 'python3 -m venv env'
                 //sh 'source ./env/bin/activate'
                 //sh 'pip install -r requirements.txt'
            }
