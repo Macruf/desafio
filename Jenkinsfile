@@ -1,13 +1,12 @@
 pipeline {
-    agent any
+    agent nome
     stages {
         stage ('Build') {
-            agent docker{
-                image: 'python:latest'
-            }
-            steps {
-                sh 'pip install virtualenv'              
-            }           
+            agent {
+                docker {
+                    image 'python:latest'
+                }
+            }   
         }
     }
 }
