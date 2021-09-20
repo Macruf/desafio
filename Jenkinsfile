@@ -3,7 +3,7 @@ pipeline {
     stages {
         stage ('Build'){
             steps {
-                sh 'apt install python3'
+                sh 'sudo apt install python3'
             }           
         }
     }
