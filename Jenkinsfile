@@ -2,8 +2,13 @@ pipeline {
     agent any
     stages {
         stage ('Build'){
+            agent {
+                docker {
+                    image: 'python:latest'
+                }
+            }
             steps {
-                sh 'sudo apt install python3'
+                sh 'python -v'              
             }           
         }
     }
