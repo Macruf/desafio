@@ -1,9 +1,9 @@
 pipeline {
-   agent any
+   agent { docker { image 'python:latest'}
    stages {
        stage("Build") {
            steps {
-               withPythonEnv 'pip install -r app/requirements.txt'
+               sh 'pip install -r app/requirements.txt'
            }
         }
         stage("Unit-Test") {
