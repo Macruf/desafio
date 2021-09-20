@@ -3,7 +3,7 @@ pipeline {
    stages {
        stage("Build") {
            steps {
-               sh 'sudo pip install -r app/requirements.txt'
+               sh 'pip install -r requirements.txt'
            }
         }
         stage("Unit-Test") {
