@@ -3,7 +3,7 @@ pipeline {
    stages {
        stage("Build") {
            steps {
-               python 'pip install -r app/requirements.txt'
+               withPythonEnv 'pip install -r app/requirements.txt'
            }
         }
         stage("Unit-Test") {
