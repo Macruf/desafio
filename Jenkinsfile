@@ -1,10 +1,10 @@
 pipeline {
-    agent nome
+    agent docker
     stages {
-        stage ('Build') {
+        stage ("Build") {
             agent {
                 docker {
-                    image 'python:latest'
+                    image "python:latest"
                 }
             }   
         }
